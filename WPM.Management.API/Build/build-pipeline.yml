@@ -18,14 +18,14 @@ steps:
 
  - task: DotNetCoreCLI@2
    displayName : 'Install report generator'
-   input :
+   inputs :
      command : 'custom'
      custom : 'tool'
      argument : 'install --global dotnet-reportgenerator-globaltool'
 
  - task: DotNetCoreCLI@2
    displayName : 'Run Unit Test'
-   input :
+   inputs :
      command : 'test'
     
      argument : '--no-build --configuration Debug /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p: CoverletOutput=$(Build.SourcesDirectory)/TestResult/Coverage'
@@ -34,10 +34,10 @@ steps:
 
  - script:
      reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines
-   displayname: 'Create Code coverage report'
+   displayName: 'Create Code coverage report'
 
  - task: PublishCodeCovergeResult@1
-   displayname : 'Publish Code Coverage Result'
+   displayName : 'Publish Code Coverage Result'
    inputs :
      codeCoverageTool : 'cobertura'
      summaryFileLocation : '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
