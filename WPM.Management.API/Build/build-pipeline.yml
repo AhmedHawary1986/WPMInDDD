@@ -36,7 +36,7 @@ steps:
      reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines
    displayName: 'Create Code coverage report'
 
- - task: PublishCodeCovergeResult@1
+ - task: PublishCodeCovergeResults@1
    displayName : 'Publish Code Coverage Result'
    inputs :
      codeCoverageTool : 'cobertura'
