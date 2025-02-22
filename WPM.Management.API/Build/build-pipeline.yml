@@ -26,7 +26,7 @@ steps:
    inputs :
      command : 'test'
     
-     argument : '--no-build --configuration Debug /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p: CoverletOutput=$(Build.SourcesDirectory)/TestResult/Coverage'
+     argument : '--no-build --configuration Debug /p:CollectCoverage=true /p:CoverletOutputFormat=Cobertura /p: CoverletOutput=$(Build.SourcesDirectory)/TestResult/Coverage/'
      publishTestResults: true
      projects : '**/*.Tests.csproj'
 
