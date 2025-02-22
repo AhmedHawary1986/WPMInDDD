@@ -35,12 +35,14 @@ steps:
  - script:
      reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines
    displayName: 'Create Code coverage report'
+ - task: PublishCodeCoverageResults@1
+   displayName: 'Publish Code Coverage'
+   inputs:
+    codeCoverageTool: 'Cobertura'  # Or 'JaCoCo', 'VisualStudio'
+    summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
+    reportDirectory: '$(Build.SourcesDirectory)/CodeCoverageReport'
 
- - task: PublishCodeCovergeResults@1
-   displayName : 'Publish Code Coverage Result'
-   inputs :
-     codeCoverageTool : 'cobertura'
-     summaryFileLocation : '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
+
 
  - task: DotNetCoreCLI@2
    inputs:
