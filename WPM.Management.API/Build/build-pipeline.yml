@@ -17,12 +17,9 @@ steps:
     command: 'build'
     projects: '**/*.csproj'
 
- - task: DotNetCoreCLI@2
-   displayName : 'Install report generator'
-   inputs :
-     command : 'custom'
-     custom : 'tool'
-     argument : 'install --global dotnet-reportgenerator-globaltool'
+ - script: dotnet tool install -g dotnet-reportgenerator-globaltool
+   displayName: 'Install ReportGenerator'
+
 
  - task: DotNetCoreCLI@2
    displayName : 'Run Unit Test'
