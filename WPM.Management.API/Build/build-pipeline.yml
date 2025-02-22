@@ -8,9 +8,8 @@ steps:
  - task: DotNetCoreCLI@2
    inputs:
      command: 'restore'
-     projects: '**/*.csproj'
      feedsToUse: 'select'
-     vstsFeed: 'DailyReader'
+     vstsFeed: 'bb5e0499-651d-49a4-8f54-1a07c573a7e9'
 
  - task: DotNetCoreCLI@2
    inputs:
