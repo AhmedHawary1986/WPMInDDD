@@ -5,10 +5,10 @@ pool:
  vmImage: 'ubuntu-latest'
  
 steps:
- - script: echo Hello,world!
-   displayName : 'Run a one-line script'
+ - script: echo Hello,world V2!
+   displayName : 'Run a one-line script V2'
 
  - script : 
-     echo Add a multiline script
-     echo one more
-   displayName : 'Run a multiline scrpt'
+     echo Add a multiline script V2
+     echo one more V2
+   displayName : 'Run a multiline scrpt V2'
