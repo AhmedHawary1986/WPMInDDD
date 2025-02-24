@@ -27,18 +27,18 @@ steps:
    inputs :
      command : 'test'
     
-     arguments : '--no-build --configuration Debug /p:CollectCoverage=true /p:CoverletOutputFormat=Cobertura /p:CoverletOutput=C:\TestResult\Coverage'
+     arguments : '--no-build --configuration Debug /p:CollectCoverage=true /p:CoverletOutputFormat=Cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResult/Coverage'
      publishTestResults: true
      projects : '**/*.Tests.csproj'
 
- - script: reportgenerator -reports:C:\TestResult\Coverage\coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines
-   displayName: 'Create Code Coverage Report'
+ # - script: reportgenerator -reports:C:\TestResult\Coverage\coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines
+ #   displayName: 'Create Code Coverage Report'
 
- - task: PublishCodeCoverageResults@1
-   displayName: 'Publish Code Coverage'
-   inputs:
-    codeCoverageTool: 'Cobertura'  # Or 'JaCoCo', 'VisualStudio'
-    summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
+ # - task: PublishCodeCoverageResults@1
+ #   displayName: 'Publish Code Coverage'
+ #   inputs:
+ #    codeCoverageTool: 'Cobertura'  # Or 'JaCoCo', 'VisualStudio'
+ #    summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
  
 
 
